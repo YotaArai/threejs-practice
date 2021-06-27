@@ -1,5 +1,5 @@
 module.exports = {
-  mode: "development",
+  mode: process.env.WEBPACK_ENV,
   entry: "./src/index.ts",
   output: {
     path: `${__dirname}/dist`,

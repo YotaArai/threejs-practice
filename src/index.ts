@@ -2,7 +2,10 @@ import * as THREE from "three";
 
 window.addEventListener("DOMContentLoaded", () => {
   // レンダラーを作成
-  const renderer = new THREE.WebGLRenderer();
+  const query = document.querySelector('#myCanvas') as HTMLCanvasElement;
+  const renderer = new THREE.WebGLRenderer({
+    canvas: query
+  });
   // レンダラーのサイズを設定
   renderer.setSize(800, 600);
   // canvasをbodyに追加

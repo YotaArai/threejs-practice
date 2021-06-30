@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // 箱を作成
   const geometry = new THREE.BoxGeometry(250, 250, 250);
-  const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+  const material = new THREE.MeshStandardMaterial();
   const box = new THREE.Mesh(geometry, material);
   box.position.z = -5;
   scene.add(box);
@@ -30,11 +30,18 @@ window.addEventListener("DOMContentLoaded", () => {
   light.position.set(1, 1, 1);
   scene.add(light);
 
+  let hue = 0;
+
   const tick = (): void => {
     requestAnimationFrame(tick);
 
     box.rotation.x += 0.05;
     box.rotation.y += 0.05;
+
+    hue++;
+    hue %= 360;
+
+    material.color = new THREE.Color("hsl(" + hue + ", 100%, 50%)");
 
     // 描画
     renderer.render(scene, camera);

@@ -1,9 +1,12 @@
+const path = require("path");
 module.exports = {
   mode: process.env.WEBPACK_ENV,
-  entry: "./src/index.ts",
+  entry: {
+    test: "/src/test",
+  },
   output: {
-    path: `${__dirname}/dist`,
-    filename: "main.js"
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name]/main.js"
   },
   target: 'node',
   module: {

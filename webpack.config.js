@@ -3,6 +3,7 @@ module.exports = {
   mode: process.env.WEBPACK_ENV,
   entry: {
     test: "/src/test",
+    holographic_intaractions: "/src/holographic_intaractions"
   },
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -14,10 +15,18 @@ module.exports = {
       {
         test: /\.ts$/,
         use: "ts-loader"
+      },
+      {
+        test: /(\.s[ac]ss)$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader" 
+        ]
       }
     ]
   },
   resolve: {
-    extensions: [".ts", ".js"],
+    extensions: [".ts", ".js", ".sass", ".scss", ".css"],
   }
 };

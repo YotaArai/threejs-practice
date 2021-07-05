@@ -70,11 +70,24 @@ export default class App{
     
     // we call this to simulate the initial position of the mouse cursor
     this.onMouseMove({ clientX: 0, clientY: 0 });
+
+    window.addEventListener('resize', this.onResize.bind(this));
   }
   
   onMouseMove({ clientX, clientY}: {clientX: number, clientY: number }) {
     this.mouse3D.x = (clientX / this.width) * 2 - 1;
     this.mouse3D.y = -(clientY / this.height) * 2 + 1;
+  }
+
+  onResize() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+    this.renderer.setSize(width, height);
+
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
   }
 
   createScene() {

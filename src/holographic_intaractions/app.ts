@@ -6,7 +6,6 @@ import Box from "./elements/box";
 import Cone from "./elements/cone";
 import Torus from "./elements/torus";
 import { distance, map, radians, hexToRgbTreeJs } from "./helper";
-import './styles/index.scss';
 
 //@ts-ignore
 import { TweenMax, Expo } from "gsap/gsap-core";

@@ -5,6 +5,7 @@ module.exports = {
     test: "/src/test",
     holographic_intaractions: "/src/holographic_intaractions"
   },
+  devtool: "source-map",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name]/main.js"
@@ -17,11 +18,23 @@ module.exports = {
         use: "ts-loader"
       },
       {
-        test: /(\.s[ac]ss)$/,
+        test: /\.scss$/,
         use: [
-          "style-loader",
-          "css-loader",
-          "sass-loader" 
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            }
+          }
         ]
       }
     ]

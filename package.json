@@ -15,8 +15,10 @@
   "dependencies": {
     "@types/gsap": "^3.0.0",
     "@types/three": "^0.129.1",
+    "autoprefixer": "^10.2.6",
     "css-loader": "^5.2.6",
     "gsap": "^3.7.0",
+    "postcss-loader": "^6.1.1",
     "sass": "^1.35.1",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.0.0",

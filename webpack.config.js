@@ -1,4 +1,5 @@
 const path = require("path");
+const enabledSourceMap = process.env.WEBPACK_ENV === "development";
 module.exports = {
   mode: process.env.WEBPACK_ENV,
   entry: {
@@ -26,13 +27,25 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
+              url: false,
+              sourceMap: enabledSourceMap,
             }
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              sourceMap: enabledSourceMap,
+              postcssOptions: {
+                plugins: [
+                  ["autoprefixer", { grid: true }],
+                ],
+              },
+            },
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true,
+              sourceMap: enabledSourceMap,
             }
           }
         ]
@@ -40,6 +53,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".ts", ".js", ".sass", ".scss", ".css"],
+    extensions: [".ts", ".js"],
   }
 };

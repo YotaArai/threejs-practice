@@ -1,14 +1,40 @@
 .main-text{
+  font-family: 'Sarpanch', sans-serif;
   text-align: center;
   z-index: 1000;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
+  text-shadow: 0 0 20px #8d95d8, 0 0 40px #8d95d8, 0 0 60px #0000ff, 0 0 10px #8d95d8, 0 0 98px #0000ff;
+  animation: blink 9s infinite;
+  @keyframes blink {
+    10% {
+      color: #111;
+      text-shadow: none;
+      filter: blur(8px);
+    }
+    60%
+    {
+      filter: blur(1px);
+    }
+    0%,
+    5%,
+    15%,
+    50%,
+    70%,
+    100% {
+      text-shadow: 0 0 20px #8d95d8, 0 0 40px #8d95d8, 0 0 60px #0000ff, 0 0 10px #8d95d8, 0 0 98px #0000ff;
+      color: #e7efff;
+      filter: blur(0px);
+    }
+  }
   &__title{
-    font-size: 4.2rem;
+    font-size: 4.6rem;
+    font-weight: 900;
   }
   &__subtitle{
     font-size: 1.3rem;
+    font-weight: 400;
   }
 }

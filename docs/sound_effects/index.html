@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script defer src="main.js"></script>
+  </head>
+  <body>
+    <div id="modal" class="modal">
+      <div class="modal-container">
+        <p class="modal_text">
+          このコンテンツは音声が再生されます。<br />
+          音量および周辺の環境にご注意ください。
+        </p>
+        <button id="modal_button" class="modal_button is-Hidden">ENTER</button>
+      </div>
+      <div id="modal_back" class="modal_back"></div>
+    </div>
+    <script type="x-shader/x-vertex" id="vertexShader">
+      varying vec3 vMvPosition;
+      void main() {
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        vec4 mvpPosition = projectionMatrix * mvPosition;
+        vMvPosition = mvPosition.xyz;
+        gl_PointSize = 8.0;
+        gl_Position = mvpPosition;
+      }
+    </script>
+    <script type="x-shader/x-fragment" id="fragmentShader">
+      precision mediump float;
+      varying vec3 vMvPosition;
+      void main() {
+        vec2 pointCoord = gl_PointCoord.st * 2.0 - 1.0;
+        float light = smoothstep(0.5, 1.0, 0.5 / length(pointCoord));
+        float depth = length(vMvPosition.z) - 42.5;
+        float alpha = smoothstep(-5.0, 0.0, depth) * 0.75 + 0.25;
+        gl_FragColor = vec4(vec3(1.0), light * alpha);
+      }
+    </script>
+  </body>
+</html>

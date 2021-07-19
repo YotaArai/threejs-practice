@@ -4,7 +4,8 @@ module.exports = {
   mode: process.env.WEBPACK_ENV,
   entry: {
     test: "/src/test",
-    holographic_intaractions: "/src/holographic_intaractions"
+    holographic_intaractions: "/src/holographic_intaractions",
+    sound_effects: "/src/sound_effects",
   },
   devtool: "source-map",
   output: {
